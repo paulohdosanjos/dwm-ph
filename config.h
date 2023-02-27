@@ -9,17 +9,34 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 6;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 8;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "Ubuntu:weight=bold:size=8:antialas=true:hinting=true", "JoyPixels:size=12:antialias=true:autohint=true","monospace:size=10" }; //ttf-joypixels, ttf-ubuntu-font-family
+																					
+
+static const char norm_fg[] = "#ff6e67";
+static const char norm_bg[] = "#282a36";
+static const char norm_border[] = "#dfdfdd";
+
+static const char sel_fg[] = "#bfbfbf";
+static const char sel_bg[] = "#282a36";
+static const char sel_border[] = "#bfbfbf";
+
+static const char urg_fg[] = "#f7f7fb";
+static const char urg_bg[] = "#5af78e";
+static const char urg_border[] = "#5af78e";
+
+static const char title_fg[] = "#8AFF80";
+static const char title_bg[] = "#282a36";
+static const char col_borderbar[]   = "#bfbfbf";
+
+static const char *colors[][3]      = {
+    /*               fg           bg         border                         */
+    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
+};
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_1[]       = "#b80f0f"; //background color of bar
 static const char col_2[]       = "#444444"; //border color unfocesed windows
 static const char col_3[]       = "#bbbbbb";
 static const char col_4[]       = "#eeeeee"; //border color focused windows and tags
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_3, col_1, col_2 },
-	[SchemeSel]  = { col_3, col_4,  col_4  },
-};
-
 /* tagging */
 static const char *tags[] = { "main", "www", "3", "4", "5", "6", "7", "8", "9" };
 
