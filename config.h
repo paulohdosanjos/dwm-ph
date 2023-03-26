@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMINAL "kitty"
 #define TERMCLASS "St"
-
+#define BROWSER "firefox"
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 12;        /* gaps between windows */
@@ -92,6 +92,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
   { MODKEY,			                  XK_r,		   spawn,		       {.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
+        { MODKEY,			XK_w,		spawn,		{.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
