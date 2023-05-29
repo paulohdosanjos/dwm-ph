@@ -43,7 +43,7 @@ static const char col_2[]       = "#444444"; //border color unfocesed windows
 static const char col_3[]       = "#bbbbbb";
 static const char col_4[]       = "#eeeeee"; //border color focused windows and tags
 /* tagging */
-static const char *tags[] = { "main", "www", "3", "4", "5"};
+static const char *tags[] = { "work1", "work2", "free", "4", "5"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -86,11 +86,13 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_1, "-nf", col_3, "-sb", col_3, "-sf", col_4, NULL};
 static const char *termcmd[]  = { TERMINAL, NULL };
+static const char *musiccmd[]  = { "spotify", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_s, spawn,               {.v = musiccmd } },
   { MODKEY,			                  XK_r,		   spawn,		       {.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
         { MODKEY,			XK_w,		spawn,		{.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -103,11 +105,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-        { MODKEY,			XK_f,		togglefullscr,	{0} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, //tiling
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} }, //floating
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, //monocycle
 	{ MODKEY,                       XK_y,      setlayout,      {0} },
+  { MODKEY|ShiftMask,			        XK_f,		   togglefullscr,	 {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
