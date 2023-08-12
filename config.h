@@ -11,18 +11,10 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int horizpadbar        = 12;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 12;        /* vertical padding for statusbar */
+static const int horizpadbar        = 9;        /* horizontal padding for statusbar */
+static const int vertpadbar         = 7;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "Ubuntu:weight=bold:size=11:antialas=true:hinting=true"}; //ttf-joypixels, ttf-ubuntu-font-family
 																					
-//static const char norm_fg[] = "#ff6e67";
-//static const char norm_bg[] = "#282a36";
-//static const char norm_border[] = "#dfdfdd";
-//
-//static const char sel_fg[] = "#bfbfbf";
-//static const char sel_bg[] = "#282a36";
-//static const char sel_border[] = "#bfbfbf";
-
 
 static const char norm_bg[] = "#222222";
 static const char norm_fg[] = "#bbbbbb";
@@ -97,7 +89,9 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_1, "-nf", col_3, "-sb", col_3, "-sf", col_4, NULL};
 static const char *termcmd[]  = { TERMINAL, NULL };
 static const char *musiccmd[]  = { "spotify", NULL };
-static const char *notescmd[] = {TERMINAL, "-e", "nvim", "todolist"};
+//static const char *notescmd[] = {TERMINAL, "-e", "nvim", "todolist"};
+static const char *notescmd[] = {"obsidian", NULL};
+static const char *screenshotcmd[] = {"flameshot", "gui" , NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -107,6 +101,7 @@ static const Key keys[] = {
   { MODKEY,			                  XK_r,		   spawn,		       {.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
   { MODKEY,			                  XK_w,		   spawn,		       {.v = (const char*[]){ BROWSER, NULL } } },
   { MODKEY,			                  XK_n,		   spawn,		       {.v = notescmd } },
+  { 0,			                  XK_Print,	 spawn,		           {.v = screenshotcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
